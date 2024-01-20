@@ -1,13 +1,20 @@
 import os
 from pathlib import Path
 
-package_name = "connect_mongoDB"
 
 list_of_files = [
-   ".github/workflows/ci.yaml",
+   ".github/workflows",
    "src/__init__.py",
-   f"src/{package_name}/__init__.py", 
-   f"src/{package_name}/mongo_crud.py", 
+   "src/components/data_ingestion.py",
+   "src/components/data_transformation.py", 
+   "src/components/model_trainer.py",
+   "src/components/model_evaluation.py",
+   "src/exceptions/__init__.py",
+   "src/exceptions/exception.py",
+   "src/logger/__init_.py",
+   "src/logger/logging.py",
+   "src/utils/__init__.py",
+   "src/utils/utils.py",
    "tests/__init__.py",
    "tests/unit/__init__.py",
    "tests/unit/unit.py",
