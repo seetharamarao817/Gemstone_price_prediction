@@ -1,0 +1,22 @@
+stages:
+  training:
+    cmd: python pipeline/training.py
+    deps:
+      - pipeline/training.py
+      - src/components/data_ingestion.py
+      - src/components/data_transformation.py
+      - src/components/model_trainer.py
+
+    outs:
+      - artifacts/raw.csv
+      - artifacts/test.csv
+      - artifacts/train.csv
+      - artifacts/preprocessor.pkl
+      - artifacts/model.pkl
+  prediction:
+    cmd: python pipeline/prediction.py
+    deps:
+      - pipeline/prediction.py
+      - artifacts/preprocessor.pkl
+      - artifacts/model.pkl
+      - src/utils/utils.py

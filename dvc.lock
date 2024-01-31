@@ -1,0 +1,61 @@
+schema: '2.0'
+stages:
+  training:
+    cmd: python pipeline/training.py
+    deps:
+    - path: pipeline/training.py
+      hash: md5
+      md5: 1196ffea6a518cde76b5d1138392338d
+      size: 793
+    - path: src/components/data_ingestion.py
+      hash: md5
+      md5: 94dc839902b0c94a234b2143397cb675
+      size: 1944
+    - path: src/components/data_transformation.py
+      hash: md5
+      md5: 5924475a38ff462ae5feeed28eaf2f71
+      size: 4434
+    - path: src/components/model_trainer.py
+      hash: md5
+      md5: 3da9b0cc296990c17acfe92e6be33e3b
+      size: 2365
+    outs:
+    - path: artifacts/model.pkl
+      hash: md5
+      md5: 5a834f31c3a0cfc3581b1018c0421448
+      size: 590
+    - path: artifacts/preprocessor.pkl
+      hash: md5
+      md5: 830db16f6721fc0665d22f26f2cb1fed
+      size: 3025
+    - path: artifacts/raw.csv
+      hash: md5
+      md5: 5ad76f1f8a914c79386781a801dd7848
+      size: 1433705
+    - path: artifacts/test.csv
+      hash: md5
+      md5: cc4183b06a7f848172ca8f1eba051add
+      size: 358631
+    - path: artifacts/train.csv
+      hash: md5
+      md5: 5de6c3d9b5c6b8be9036a4ae196b2680
+      size: 1075133
+  prediction:
+    cmd: python pipeline/prediction.py
+    deps:
+    - path: artifacts/model.pkl
+      hash: md5
+      md5: 5a834f31c3a0cfc3581b1018c0421448
+      size: 590
+    - path: artifacts/preprocessor.pkl
+      hash: md5
+      md5: 830db16f6721fc0665d22f26f2cb1fed
+      size: 3025
+    - path: pipeline/prediction.py
+      hash: md5
+      md5: 997aaf7cf7129c41f3d090f19d62d84d
+      size: 1954
+    - path: src/utils/utils.py
+      hash: md5
+      md5: 437e669374935f58cdd113bed00cbf01
+      size: 1532
